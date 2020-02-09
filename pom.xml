@@ -2,97 +2,114 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.4.RELEASE</version>
+    </parent>
 
-    <groupId>am.ik.archetype</groupId>
-    <artifactId>maven-reactjs-blank</artifactId>
+    <groupId>org.react.reddit</groupId>
+    <artifactId>react-reddit-simple</artifactId>
     <version>1.0.0</version>
-    <packaging>jar</packaging>
-
-    <name>React.js Blank Project (from https://github.com/making/maven-reactjs-blank)</name>
-    <licenses><!-- DELETE THIS LINE -->
-        <license><!-- DELETE THIS LINE -->
-            <name>Apache License, Version 2.0</name><!-- DELETE THIS LINE -->
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url><!-- DELETE THIS LINE -->
-            <distribution>repo</distribution><!-- DELETE THIS LINE -->
-        </license><!-- DELETE THIS LINE -->
-    </licenses><!-- DELETE THIS LINE -->
-    <scm><!-- DELETE THIS LINE -->
-        <url>https://github.com/making/maven-reactjs-blank</url><!-- DELETE THIS LINE -->
-        <connection>scm:git:git@github.com:making/maven-reactjs-blank.git</connection><!-- DELETE THIS LINE -->
-        <developerConnection>scm:git:git@github.com:making/maven-reactjs-blank.git</developerConnection><!-- DELETE THIS LINE -->
-    </scm><!-- DELETE THIS LINE -->
-    <url>https://github.com/making/maven-reactjs-blank</url><!-- DELETE THIS LINE -->
-    <description>Blank Project for React.js</description><!-- DELETE THIS LINE -->
-    <developers><!-- DELETE THIS LINE -->
-        <developer><!-- DELETE THIS LINE -->
-            <id>making</id><!-- DELETE THIS LINE -->
-            <name>Toshiaki Maki</name><!-- DELETE THIS LINE -->
-            <email>makingx@gmail.com</email><!-- DELETE THIS LINE -->
-            <url>https://twitter.com/making</url><!-- DELETE THIS LINE -->
-        </developer><!-- DELETE THIS LINE -->
-    </developers><!-- DELETE THIS LINE -->
-    <distributionManagement><!-- DELETE THIS LINE -->
-        <snapshotRepository><!-- DELETE THIS LINE -->
-            <id>ossrh</id><!-- DELETE THIS LINE -->
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url><!-- DELETE THIS LINE -->
-        </snapshotRepository><!-- DELETE THIS LINE -->
-        <repository><!-- DELETE THIS LINE -->
-            <id>ossrh</id><!-- DELETE THIS LINE -->
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url><!-- DELETE THIS LINE -->
-        </repository><!-- DELETE THIS LINE -->
-    </distributionManagement><!-- DELETE THIS LINE -->
+    <packaging>war</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>5.0.5.RELEASE</spring.version>
+        <spring.boot.version>2.2.4.RELEASE</spring.boot.version>
+        <javax.version>3.0-alpha-1</javax.version>
     </properties>
-
     <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <version>${spring.boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M4</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${javax.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+            <version>2.2.4.RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
     <build>
+        <finalName>react-reddit-simple</finalName>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.8</version>
-                <executions>
-                    <execution>
-                        <id>gulp</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <target>
-                                <echo message="Gulp!"/>
-                                <exec executable="gulp">
-                                    <arg value="build"/>
-                                </exec>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${basedir}/target/classes/META-INF/resources</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>dest</directory>
-                                    <filtering>false</filtering>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+                <source>13</source>
+                <target>13</target>
+            </configuration>
+        </plugin>
+
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <configuration>
+                <excludes>
+                    <exclude>**/*IntegrationTest.java</exclude>
+                    <exclude>**/*LiveTest.java</exclude>
+                </excludes>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-deploy-plugin</artifactId>
+            <version>3.0.0-M1</version>
+        </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
     </build>
 </project>

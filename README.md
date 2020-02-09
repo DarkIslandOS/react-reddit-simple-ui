@@ -1,63 +1,11 @@
-# React.js Blank
+################################################
+################################################
+- The goal of this coding exercise is to create a React app that uses the Reddit API to display a given subreddit's posts.
 
-Maven archetype to create a react.js maven project
+- Provide a UI that allows a user to enter a subreddit (i.e. reactjs - https://www.reddit.com/r/reactjs.json)
 
-## How to use
+- When the UI receives the subreddit, display the most recent posts
 
-with Bash
+- The UI should only show 10 posts at a time with the ability to move forward/backward through the list of posts
 
-    mvn archetype:generate\
-     -DarchetypeGroupId=am.ik.archetype\
-     -DarchetypeArtifactId=maven-reactjs-blank-archetype\
-     -DarchetypeVersion=1.0.0
-
-with CommandPrompt (Windows)
-
-    mvn archetype:generate^
-     -DarchetypeGroupId=am.ik.archetype^
-     -DarchetypeArtifactId=maven-reactjs-blank-archetype^
-     -DarchetypeVersion=1.0.0
-
-### Example
-
-This blank project requires `npm` and `gulp`.
-
-You need the following instruction:
-
-    $ npm install -g gulp
-
-#### Create a project
-
-
-    $ mvn archetype:generate -B\
-     -DarchetypeGroupId=am.ik.archetype\
-     -DarchetypeArtifactId=maven-reactjs-blank-archetype\
-     -DarchetypeVersion=1.0.0\
-     -DgroupId=demo\
-     -DartifactId=hello-react\
-     -Dversion=1.0.0-SNAPSHOT
-
-#### Initialize the project
-
-    $ npm install
-
-#### Build the application
-
-    $ gulp build
-
-or
-
-    $ gulp watch
-
-open dest/index.html
-
-#### Build jar
-
-    $ mvn clean package
-
-The output of `gulp` are copied to `target/classes/META-INF/resources/`.
-So this jar can be used as [WebJars](http://www.webjars.org/documentation).
-
-## License
-
-Licensed under the Apache License, Version 2.0.
+- In order to test your code, provide instructions in your README.md on how to compile, run, and test your code
